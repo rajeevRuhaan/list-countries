@@ -9,6 +9,6 @@ export const getCountriesList = async (value) => {
 };
 
 export const getCountry = async (country) => {
-  let response = await axios.get(`${baseUrl}/name/${country}`);
+  let response = await axios.get(`${baseUrl}/name/${country}?fullText=true`);
   return response.data;
 };

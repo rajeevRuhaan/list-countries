@@ -5,19 +5,17 @@ import { useEffect, useState } from "react";
 import { getCountry } from "../api/Api";
 
 const useCountry = (country) => {
-  console.log(country);
   const [countryData, setCountryData] = useState([]);
   const [errCountryData, setErr] = useState();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // use async function to control over fetching API data
-    const fetchCountryData = () => {
-      setLoading(true);
+    const fetchCountryData = async () => {
       try {
         //get single country data from API call
-        const data = getCountry(country);
-        console.log(data);
+        const data = await getCountry(country);
+
         setCountryData(data);
         setLoading(false);
       } catch (error) {

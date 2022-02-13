@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import Button from "@mui/material/Button";
 import Header from "../components/Header";
 import Country from "../components/Country";
 
@@ -6,9 +8,16 @@ import Country from "../components/Country";
 
 const CountryPage = () => {
   return (
-    <div>
+    <div className="country-page">
       <Header />
-      <Country />
+
+      <div>
+        <Button variant="text" color="secondary" size="large" sx={{ m: 1 }}>
+          {" "}
+          <Link to={"/"}>Back Button</Link>
+        </Button>
+        <Country />
+      </div>
     </div>
   );
 };

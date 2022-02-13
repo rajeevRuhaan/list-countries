@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import CountriesList from "../components/CountriesList";
 import Header from "../components/Header";
+import SearchCountry from "../components/SearchCountry";
 
 const HomePage = () => {
+  const [inputText, setInputText] = useState("");
+
   return (
     <div>
       <Header />
-
-      <CountriesList />
+      <SearchCountry setInputValue={setInputText} />
+      <CountriesList inputText={inputText} />
     </div>
   );
 };

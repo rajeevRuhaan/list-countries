@@ -1,0 +1,28 @@
+.country-page {
+}
+.container {
+}
+.search-area {
+  width: auto;
+  height: 75px;
+  background-color: rgb(218, 218, 218);
+  padding: 20px 50px;
+}
+.MuiFormControl-root {
+  margin: 0 auto;
+  align-content: center;
+  padding: 5rem;
+}
+.MuiButton-root {
+  padding: 2rem;
+  margin: 50px auto;
+}
+.MuiCard-root {
+  margin: 50px auto;
+  padding: 2rem;
+}
+.MuiButton-root a {
+  text-decoration: none;
+  font-size: large;
+  color: blue;
+}
