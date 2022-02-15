@@ -1,10 +1,10 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+// Material ui components
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-//
 import CardActions from "@mui/material/CardActions";
 import IconButton from "@mui/material/IconButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -19,9 +19,9 @@ import Loading from "./Loading";
 const Country = () => {
   const country = useParams();
   const [countryData, errCountryData, loading] = useCountry(country.country);
-  //
+
   const [expanded, setExpanded] = React.useState(false);
-  //to check
+  //to apply expand them
   const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
     return <IconButton {...other} />;
@@ -127,11 +127,13 @@ const Country = () => {
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>
               <CardContent>
-                {countryData[0].borders
-                  ? countryData[0].borders.map((border) => {
-                      return <p key={border}>{border}</p>;
-                    })
-                  : "no border found"}
+                <ul>
+                  {countryData[0].borders
+                    ? countryData[0].borders.map((border) => {
+                        return <li key={border}>{border}</li>;
+                      })
+                    : "no border found"}
+                </ul>
               </CardContent>
             </Collapse>
             <CardActions disableSpacing>
@@ -147,11 +149,15 @@ const Country = () => {
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>
               <CardContent>
-                {countryData[0].languages
-                  ? Object.values(countryData[0].languages).map((language) => {
-                      return <p key={language}>{language}</p>;
-                    })
-                  : "no border found"}
+                <ul>
+                  {countryData[0].languages
+                    ? Object.values(countryData[0].languages).map(
+                        (language) => {
+                          return <li key={language}>{language}</li>;
+                        }
+                      )
+                    : "no border found"}
+                </ul>
               </CardContent>
             </Collapse>
           </Card>

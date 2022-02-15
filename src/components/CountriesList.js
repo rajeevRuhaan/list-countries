@@ -1,5 +1,4 @@
 import React from "react";
-import useCountries from "../custom-hooks/useCountries";
 import { Link } from "react-router-dom";
 
 //material ui components
@@ -12,7 +11,6 @@ import Paper from "@mui/material/Paper";
 //pagination
 import TableFooter from "@mui/material/TableFooter";
 import TablePagination from "@mui/material/TablePagination";
-import PropTypes from "prop-types";
 
 // material ui icon
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -20,10 +18,10 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 // components importing
 import Loading from "./Loading";
 import TableHeader from "./TableHeader";
+import useCountries from "../custom-hooks/useCountries";
 
 const CountriesList = ({ inputText }) => {
   const [countries, err, loading] = useCountries();
-  console.log("input: ", inputText);
 
   //pagination
   const [page, setPage] = React.useState(0);
@@ -65,7 +63,7 @@ const CountriesList = ({ inputText }) => {
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((country, index) => (
                     <TableRow
-                      key={country.index}
+                      key={index}
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                     >
                       <TableCell align="center" component="th" scope="row">
@@ -88,7 +86,7 @@ const CountriesList = ({ inputText }) => {
                             })
                           : null}
                       </TableCell>
-                      <TableCell>
+                      <TableCell align="center">
                         <FavoriteIcon />
                       </TableCell>
                     </TableRow>
