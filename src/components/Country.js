@@ -17,8 +17,8 @@ import useCountry from "../custom-hooks/useCountry";
 import Loading from "./Loading";
 
 const Country = () => {
-  const country = useParams();
-  const [countryData, errCountryData, loading] = useCountry(country.country);
+  const country = useParams().country;
+  const [countryData, errCountryData, loading] = useCountry(country);
 
   const [expanded, setExpanded] = React.useState(false);
   //to apply expand them
@@ -40,9 +40,7 @@ const Country = () => {
   return (
     <>
       {errCountryData ? (
-        <>
-          <h1>{errCountryData.message}.</h1>
-        </>
+        <h1>{errCountryData.message}.</h1>
       ) : loading ? (
         <Loading />
       ) : countryData[0] ? (
@@ -162,8 +160,7 @@ const Country = () => {
             </Collapse>
           </Card>
         </div>
-      ) : //
-      null}
+      ) : null}
     </>
   );
 };
