@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 // import mui components
 import MuiTableBody from "@mui/material/TableBody";
@@ -7,9 +8,12 @@ import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 // material ui icon
 import FavoriteIcon from "@mui/icons-material/Favorite";
+// import components
+import { addFavorite } from "../../redux/action";
 
 const TableBody = ({ countries, page, rowsPerPage, inputText }) => {
-  console.log(inputText);
+  const dispatch = useDispatch();
+
   return (
     <MuiTableBody>
       {countries
@@ -49,7 +53,11 @@ const TableBody = ({ countries, page, rowsPerPage, inputText }) => {
                       : "N/A"}
                   </TableCell>
                   <TableCell align="center">
-                    <FavoriteIcon />
+                    <button
+                      onClick={() => dispatch(addFavorite(country.name.common))}
+                    >
+                      <FavoriteIcon />
+                    </button>
                   </TableCell>
                 </TableRow>
               );
