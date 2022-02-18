@@ -1,32 +1,32 @@
-const reducer = (state = [], action) => {
-  // action = {type.'ADD_FAVORITE}
-  // action = {type.'REMOVE_FAVORITE}
+const initialState = {
+  favorite: localStorage.getItem("favoriteCountries")
+    ? JSON.parse(localStorage.getItem("favoriteCountries"))
+    : [],
+};
 
+const reducer = (state = initialState, action) => {
   const { type, payload } = action;
-  let updateCountry = [{ ...state }];
 
   switch (type) {
     case "ADD_FAVORITE":
-      let isCountry = false;
-      for (let country of updateCountry) {
-        if (country.countryName === payload.countryName) isCountry = true;
-      }
-      if (isCountry) {
-        let newUpdateCountry = updateCountry.filter((e) => {
-          return e.countryName !== payload.countryName;
-        });
-        return newUpdateCountry;
-      } else {
-        updateCountry = {
-          ...state,
-          countryName: payload.countryName,
-        };
-      }
+      const storageFavorite = [...state.favorite, payload];
 
-      return updateCountry;
+      localStorage.setItem(
+        "favoriteCountries",
+        JSON.stringify(storageFavorite)
+      );
+      return { ...state, favorite: [...state.favorite, payload] };
 
     case "REMOVE_FAVORITE":
-      return {};
+      const newfavorite = state.favorite.filter(
+        (country) => country !== payload
+      );
+
+      localStorage.setItem("favoriteCountries", JSON.stringify(newfavorite));
+      return {
+        ...state,
+        favorite: newfavorite,
+      };
 
     default:
       return state;

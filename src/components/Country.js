@@ -46,7 +46,7 @@ const Country = () => {
       ) : countryData[0] ? (
         //load data once it received
         <div className="container">
-          <Card sx={{ width: 700 }}>
+          <Card sx={{ width: 500 }}>
             <CardMedia
               component="img"
               height="auto"

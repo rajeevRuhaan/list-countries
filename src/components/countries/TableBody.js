@@ -1,18 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 // import mui components
 import MuiTableBody from "@mui/material/TableBody";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
+
 // material ui icon
 import FavoriteIcon from "@mui/icons-material/Favorite";
 // import components
-import { addFavorite } from "../../redux/action";
+import { addFavorite, removeFavorite } from "../../redux/action";
 
 const TableBody = ({ countries, page, rowsPerPage, inputText }) => {
   const dispatch = useDispatch();
+  const favorite = useSelector((state) => state.favorite);
+
+  const handleFavoriteCountry = (favoriteCountry) => {
+    if (favorite.includes(favoriteCountry)) {
+      dispatch(removeFavorite(favoriteCountry));
+      alert(
+        `Successfully removed ${favoriteCountry} from favorite countries list`
+      );
+    } else {
+      dispatch(addFavorite(favoriteCountry));
+      alert(`Successfully added ${favoriteCountry} to favorite countries`);
+    }
+  };
 
   return (
     <MuiTableBody>
@@ -30,7 +44,7 @@ const TableBody = ({ countries, page, rowsPerPage, inputText }) => {
             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             .map((country) => {
               return (
-                <TableRow key={country.name.commo}>
+                <TableRow key={country.name.common}>
                   <TableCell align="center" component="th" scope="row">
                     <img src={country.flags.png} alt="country flag" />
                   </TableCell>
@@ -54,7 +68,7 @@ const TableBody = ({ countries, page, rowsPerPage, inputText }) => {
                   </TableCell>
                   <TableCell align="center">
                     <button
-                      onClick={() => dispatch(addFavorite(country.name.common))}
+                      onClick={() => handleFavoriteCountry(country.name.common)}
                     >
                       <FavoriteIcon />
                     </button>
