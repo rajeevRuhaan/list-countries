@@ -1,27 +1,23 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { AppContext } from "../App";
+import { useTheme } from "@mui/material/styles";
+
+import { ColorModeContext } from "../App";
 
 // components mui
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
+import IconButton from "@mui/material/IconButton";
 
 import { Box, Typography } from "@mui/material";
 
 const Header = () => {
   const favoriteCountries = useSelector((state) => state.favorite);
-  const appContext = useContext(AppContext);
-  const { setDarkMode, darkMode } = appContext;
-  console.log(appContext);
+  const colorMode = useContext(ColorModeContext);
+  const theme = useTheme();
 
-  const changeMode = () => {
-    if (!darkMode) {
-      setDarkMode({ ...darkMode, mode: true });
-    } else {
-      setDarkMode({ ...darkMode, mode: false });
-    }
-  };
   //style for typography
   const styles = {
     typography: {
@@ -44,9 +40,9 @@ const Header = () => {
         backgroundColor: "skyblue",
       }}
     >
-      <div>
+      <div style={{ textDecoration: "none" }}>
         <Link to="/">
-          <Typography sx={{ fontSize: 30 }}>Countries List</Typography>
+          <Typography sx={{ fontSize: 30 }}>Countries Info.</Typography>
         </Link>
       </div>
       <div
@@ -71,10 +67,16 @@ const Header = () => {
           />
         </Link>
 
-        <Brightness4Icon
+        <IconButton
           sx={{ marginRight: "50px", width: 40, height: 40 }}
-          onClick={() => changeMode()}
-        />
+          onClick={colorMode}
+        >
+          {theme.palette.mode === "dark" ? (
+            <Brightness7Icon />
+          ) : (
+            <Brightness4Icon />
+          )}
+        </IconButton>
       </div>
     </Box>
   );

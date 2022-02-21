@@ -12,23 +12,22 @@ import CountriesPage from "./page/CountriesPage";
 import FavoriteCountriesPage from "./page/FavoriteCountriesPage";
 
 //
-export const AppContext = createContext();
+export const ColorModeContext = createContext();
 
 function App() {
-  const [darkMode, setDarkMode] = useState({
-    mode: false,
-  });
-  const contextValue = { ...darkMode, setDarkMode };
+  const [mode, setMode] = useState("light");
+  const colorMode = () => {
+    setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
+  };
   //
   const theme = createTheme({
     palette: {
-      type: darkMode ? "dark" : "light",
+      mode,
     },
   });
-  console.log(theme);
 
   return (
-    <AppContext.Provider value={contextValue}>
+    <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <Routes>
           <Route path="/" element={<CountriesPage />} />
@@ -36,7 +35,7 @@ function App() {
           <Route path="/favorites" element={<FavoriteCountriesPage />} />
         </Routes>
       </ThemeProvider>
-    </AppContext.Provider>
+    </ColorModeContext.Provider>
   );
 }
 
