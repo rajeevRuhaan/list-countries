@@ -16,7 +16,7 @@ const FavoriteCountries = () => {
       <ListGroup variant="flush">
         {favoriteCountries.map((countryName) => {
           return (
-            <ListGroup.Item>
+            <ListGroup.Item key={countryName}>
               <Link to={`/country/${countryName}`}>{countryName}</Link>
             </ListGroup.Item>
           );

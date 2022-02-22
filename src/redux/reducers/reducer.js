@@ -1,9 +1,7 @@
-import { ADD_FAVORITE, REMOVE_FAVORITE } from "./action";
+import { ADD_FAVORITE, REMOVE_FAVORITE } from "../action";
 
 const initialState = {
-  favorite: localStorage.getItem("favoriteCountries")
-    ? JSON.parse(localStorage.getItem("favoriteCountries"))
-    : [],
+  favorite: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -11,17 +9,19 @@ const reducer = (state = initialState, action) => {
 
   switch (type) {
     case ADD_FAVORITE:
-      const storageFavorite = [...state.favorite, payload];
+      const countryName = payload;
+      const isInList = state.favorite.some((name) => name === countryName);
 
-      localStorage.setItem(
-        "favoriteCountries",
-        JSON.stringify(storageFavorite)
-      );
-      return { ...state, favorite: [...state.favorite, payload] };
+      if (isInList) {
+        return state;
+      }
+
+      return { ...state, favorite: [...state.favorite, countryName] };
 
     case REMOVE_FAVORITE:
+      const removeCountryName = payload;
       const newfavorite = state.favorite.filter(
-        (country) => country !== payload
+        (country) => country !== removeCountryName
       );
 
       localStorage.setItem("favoriteCountries", JSON.stringify(newfavorite));

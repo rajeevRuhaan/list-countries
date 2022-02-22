@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 //material ui components
 import {
   TableContainer,
@@ -20,6 +21,8 @@ import useCountries from "../../custom-hooks/useCountries";
 
 const Index = ({ inputText }) => {
   const [countries, err, loading] = useCountries();
+  const listOfCountries = useSelector((state) => state.countries.countries);
+  console.log(listOfCountries);
 
   //pagination
   const [page, setPage] = React.useState(0);

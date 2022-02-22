@@ -7,11 +7,11 @@ import "./index.css";
 // import components
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
-import reduxStore from "./redux/store";
+import storeFactory from "./redux/store";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={reduxStore}>
+    <Provider store={storeFactory}>
       <BrowserRouter>
         <App />
       </BrowserRouter>

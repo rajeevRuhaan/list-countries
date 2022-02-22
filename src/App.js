@@ -1,5 +1,6 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 // css
 import "./App.css";
@@ -10,12 +11,15 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CountryPage from "./page/CountryPage";
 import CountriesPage from "./page/CountriesPage";
 import FavoriteCountriesPage from "./page/FavoriteCountriesPage";
+import { fetchCountries } from "./redux/action";
 
 //
 export const ColorModeContext = createContext();
 
 function App() {
   const [mode, setMode] = useState("light");
+  const dispatch = useDispatch();
+
   const colorMode = () => {
     setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
   };
@@ -25,6 +29,9 @@ function App() {
       mode,
     },
   });
+  useEffect(() => {
+    dispatch(fetchCountries());
+  }, [dispatch]);
 
   return (
     <ColorModeContext.Provider value={colorMode}>
