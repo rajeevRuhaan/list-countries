@@ -20,9 +20,10 @@ import Loading from "../Loading";
 import useCountries from "../../custom-hooks/useCountries";
 
 const Index = ({ inputText }) => {
-  const [countries, err, loading] = useCountries();
   const listOfCountries = useSelector((state) => state.countries.countries);
-  console.log(listOfCountries);
+
+  const [countries, err, loading] = useCountries(listOfCountries);
+  console.log(countries, err, loading);
 
   //pagination
   const [page, setPage] = React.useState(0);

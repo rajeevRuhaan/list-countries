@@ -1,8 +1,8 @@
 // This hook is used to fetch all countries
 import { useEffect, useState } from "react";
-import { getCountriesList } from "../api/Api";
+// import { getCountriesList } from "../api/Api";
 
-const useCountries = () => {
+const useCountries = (listCountries) => {
   const [countries, setCountries] = useState([]);
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState();
@@ -13,16 +13,16 @@ const useCountries = () => {
       setLoading(true);
       try {
         //get all countries data from API call
-        const data = await getCountriesList("/all");
+        // const data = await getCountriesList("/all");
 
-        setCountries(data);
+        await setCountries(listCountries);
         setLoading(false);
       } catch (error) {
         setErr(error);
       }
     };
     fetchCountries();
-  }, []);
+  }, [listCountries]);
 
   return [countries, err, loading];
 };
