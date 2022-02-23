@@ -10,12 +10,11 @@ import TableCell from "@mui/material/TableCell";
 // material ui icon
 import FavoriteIcon from "@mui/icons-material/Favorite";
 // import components
-import { addFavorite, removeFavorite } from "../../redux/action";
+import { addFavorite, removeFavorite } from "../../redux/favorite/action";
 
 const TableBody = ({ countries, page, rowsPerPage, inputText }) => {
   const dispatch = useDispatch();
-  const favorite = useSelector((state) => state.favorite);
-  console.log(favorite);
+  const favorite = useSelector((state) => state.favorite.favorite);
 
   const handleFavoriteCountry = (favoriteCountry) => {
     if (favorite.includes(favoriteCountry)) {
@@ -71,7 +70,13 @@ const TableBody = ({ countries, page, rowsPerPage, inputText }) => {
                     <button
                       onClick={() => handleFavoriteCountry(country.name.common)}
                     >
-                      <FavoriteIcon />
+                      <FavoriteIcon
+                        style={{
+                          color: favorite.includes(country.name.common)
+                            ? "red"
+                            : "black",
+                        }}
+                      />
                     </button>
                   </TableCell>
                 </TableRow>

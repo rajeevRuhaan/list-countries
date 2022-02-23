@@ -1,0 +1,27 @@
+.card-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.card {
+  width: 400px;
+  min-height: 500px;
+  display: flex;
+  margin-bottom: 60px;
+  flex-direction: column;
+}
+.flag img {
+  width: 400px;
+}
+.section {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 5px;
+  border: 0.1px solid grey;
+}
+.section__heading {
+  font-weight: 500;
+  font-size: 17px;
+}

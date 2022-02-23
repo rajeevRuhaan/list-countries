@@ -1,37 +1,38 @@
 import {
-  FETCHING_COUNTRIES,
-  FETCH_COUNTRIES_SUCCESS,
-  FETCH_COUNTRIES_FAIL,
-} from "../action";
+  FETCHING_COUNTRY,
+  FETCH_COUNTRY_SUCCESS,
+  FETCH_COUNTRY_ERROR,
+} from "../../constant";
 
 const initialState = {
-  countries: [],
+  country: [],
   loading: false,
-  err: null,
+  error: "",
 };
-const reducerfetchAPI = (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case FETCHING_COUNTRIES:
+    case FETCHING_COUNTRY:
       return {
         ...state,
         loading: true,
       };
-    case FETCH_COUNTRIES_SUCCESS:
+    case FETCH_COUNTRY_SUCCESS:
       return {
         ...state,
-        countries: payload,
+        country: payload,
         loading: false,
       };
-    case FETCH_COUNTRIES_FAIL:
+    case FETCH_COUNTRY_ERROR:
       return {
         ...state,
         error: payload,
       };
+
     default:
       return state;
   }
 };
 
-export default reducerfetchAPI;
+export default reducer;

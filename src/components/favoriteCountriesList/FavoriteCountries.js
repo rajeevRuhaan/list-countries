@@ -6,7 +6,7 @@ import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 
 const FavoriteCountries = () => {
-  const favoriteCountries = useSelector((state) => state.favorite);
+  const favoriteCountries = useSelector((state) => state.favorite.favorite);
 
   return (
     <Card style={{ width: "50%", margin: "50px auto", padding: "2rem" }}>

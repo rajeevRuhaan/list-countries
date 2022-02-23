@@ -11,7 +11,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CountryPage from "./page/CountryPage";
 import CountriesPage from "./page/CountriesPage";
 import FavoriteCountriesPage from "./page/FavoriteCountriesPage";
-import { fetchCountries } from "./redux/action";
+import { fetchCountries } from "./redux/countries/action";
 
 //
 export const ColorModeContext = createContext();
