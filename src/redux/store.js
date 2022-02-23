@@ -18,7 +18,7 @@ const storeFactory = () => {
   store.subscribe(() => {
     const currentState = store.getState();
     const favoriteList = currentState.favorite;
-    localStorage.setItem("favoriteCountrires", JSON.stringify(favoriteList));
+    localStorage.setItem("favoriteCountries", JSON.stringify(favoriteList));
   });
 
   const favoriteLists = localStorage.getItem("favoriteCountries");
