@@ -60,7 +60,7 @@ const Header = () => {
           }}
         >
           <Typography style={styles.typography}>
-            {favoriteCountries.length}
+            {favoriteCountries ? favoriteCountries.length : 0}
           </Typography>
           <FavoriteIcon
             sx={{ marginRight: "50px", color: "white", width: 40, height: 40 }}

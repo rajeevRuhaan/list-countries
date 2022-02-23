@@ -7,19 +7,12 @@ import rootReducer from "./reducers";
 const initialState = {
   favorite: [],
   countries: [],
-  error: null,
 };
 const storeFactory = () => {
-  const middlewares = [thunk];
-  const favoriteLists = localStorage.getItem("favoriteCountries");
-
-  if (favoriteLists) {
-    initialState.favorite = JSON.parse(favoriteLists);
-  }
   const store = createStore(
     rootReducer,
     initialState,
-    composeWithDevTools(applyMiddleware(...middlewares))
+    composeWithDevTools(applyMiddleware(thunk))
   );
 
   store.subscribe(() => {
@@ -27,6 +20,13 @@ const storeFactory = () => {
     const favoriteList = currentState.favorite;
     localStorage.setItem("favoriteCountrires", JSON.stringify(favoriteList));
   });
+
+  const favoriteLists = localStorage.getItem("favoriteCountries");
+
+  if (favoriteLists) {
+    initialState.favorite = JSON.parse(favoriteLists);
+  }
+
   return store;
 };
 

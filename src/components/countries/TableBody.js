@@ -15,6 +15,7 @@ import { addFavorite, removeFavorite } from "../../redux/action";
 const TableBody = ({ countries, page, rowsPerPage, inputText }) => {
   const dispatch = useDispatch();
   const favorite = useSelector((state) => state.favorite);
+  console.log(favorite);
 
   const handleFavoriteCountry = (favoriteCountry) => {
     if (favorite.includes(favoriteCountry)) {
