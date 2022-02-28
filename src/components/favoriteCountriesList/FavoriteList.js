@@ -4,8 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { removeFavorite } from "../../redux/favorite/action";
 //mui components
 import Typography from "@mui/material/Typography";
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import Tooltip from "@mui/material/Tooltip";
 import IconButton from "@mui/material/IconButton";
 import Grid from "@mui/material/Grid";
 import DeleteIcon from "@mui/icons-material/Delete";
