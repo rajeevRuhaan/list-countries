@@ -31,5 +31,6 @@ export const fetchCountriesFail = (err) => {
   return {
     type: FETCH_COUNTRIES_ERROR,
     payload: err,
+    loading: false,
   };
 };

@@ -5,14 +5,13 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import rootReducer from "./combineReducers";
 
 const initialState = {
+  sort: { sortBy: "" },
   favorite: { favorite: [] },
   countries: { countries: [], loading: false, err: null },
   country: { country: [], loading: false, error: null },
 };
 const storeFactory = () => {
   const favoriteLists = localStorage.getItem("favoriteCountries");
-  //console.log local store
-  console.log("favorite list: ", favoriteLists);
 
   if (favoriteLists) {
     initialState.favorite.favorite = JSON.parse(favoriteLists);

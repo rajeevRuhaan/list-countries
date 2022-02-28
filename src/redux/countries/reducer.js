@@ -29,7 +29,8 @@ const reducer = (state = initialState, action) => {
     case FETCH_COUNTRIES_ERROR:
       return {
         ...state,
-        error: payload,
+        err: payload.message,
+        loading: false,
       };
     default:
       return state;

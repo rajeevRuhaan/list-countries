@@ -4,16 +4,16 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: -100px;
 }
 .card {
-  width: 400px;
+  width: 500px;
   min-height: 500px;
   display: flex;
-  margin-bottom: 60px;
   flex-direction: column;
 }
 .flag img {
-  width: 400px;
+  width: 500px;
 }
 .section {
   display: flex;
@@ -23,5 +23,5 @@
 }
 .section__heading {
   font-weight: 500;
-  font-size: 17px;
+  font-size: 20px;
 }

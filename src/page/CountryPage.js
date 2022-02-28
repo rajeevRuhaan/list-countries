@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 //mui
-import { Paper } from "@mui/material";
 
 // components
 import Header from "../components/Header";

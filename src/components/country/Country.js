@@ -11,6 +11,7 @@ import { IconButton } from "@material-ui/core";
 //import components
 import Loading from "../Loading";
 import Error from "../Error";
+import { addFavorite, removeFavorite } from "../../redux/favorite/action";
 
 const Country = () => {
   const name = useParams().country;
@@ -22,6 +23,14 @@ const Country = () => {
   useEffect(() => {
     dispatch(fetchCountry(name));
   }, [dispatch, name]);
+
+  const handleFavorite = (favoriteCountry) => {
+    if (favorite.includes(favoriteCountry)) {
+      dispatch(removeFavorite(favoriteCountry));
+    } else {
+      dispatch(addFavorite(favoriteCountry));
+    }
+  };
 
   if (loading) {
     return <Loading />;
@@ -40,7 +49,9 @@ const Country = () => {
             <div className="section">
               <div className="section__heading">{country[0].name.common}</div>
               <div className="section__content">
-                <IconButton>
+                <IconButton
+                  onClick={() => handleFavorite(country[0].name.common)}
+                >
                   <FavoriteIcon
                     style={{
                       color: favorite.includes(country[0].name.common)

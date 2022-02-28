@@ -33,7 +33,7 @@ const Header = () => {
       }}
     >
       <div className="container-left" style={{ textDecoration: "none" }}>
-        <Link to="/">
+        <Link to="/" style={{ textDecoration: "none" }}>
           <Typography sx={{ fontSize: 30 }}>Countries Info.</Typography>
         </Link>
       </div>

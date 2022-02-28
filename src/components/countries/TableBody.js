@@ -15,23 +15,59 @@ import { addFavorite, removeFavorite } from "../../redux/favorite/action";
 const TableBody = ({ countries, page, rowsPerPage, inputText }) => {
   const dispatch = useDispatch();
   const favorite = useSelector((state) => state.favorite.favorite);
+  //sorting action
+  const sortBy = useSelector((state) => state.sort.sortBy);
+
+  const sortCountries = () => {
+    if (sortBy === "") {
+      return [...countries];
+    } else if (sortBy === "populationDes") {
+      return [...countries].sort((a, b) =>
+        b.population < a.population ? -1 : b.population > a.population ? 1 : 0
+      );
+    } else if (sortBy === "populationAsc") {
+      return [...countries].sort((a, b) =>
+        b.population < a.population ? 1 : b.population > a.population ? -1 : 0
+      );
+    } else if (sortBy === "nameAsc") {
+      return [...countries].sort((a, b) =>
+        b.name.common < a.name.common
+          ? 1
+          : b.name.common > a.name.common
+          ? -1
+          : 0
+      );
+    } else if (sortBy === "nameDes") {
+      return [...countries].sort((a, b) =>
+        b.name.common < a.name.common
+          ? -1
+          : b.name.common > a.name.common
+          ? 1
+          : 0
+      );
+    } else if (sortBy === "regionDes") {
+      return [...countries].sort((a, b) =>
+        b.region < a.region ? -1 : b.region > a.region ? 1 : 0
+      );
+    } else if (sortBy === "regionAsc") {
+      return [...countries].sort((a, b) =>
+        b.region < a.region ? 1 : b.region > a.region ? -1 : 0
+      );
+    }
+  };
 
   const handleFavoriteCountry = (favoriteCountry) => {
     if (favorite.includes(favoriteCountry)) {
       dispatch(removeFavorite(favoriteCountry));
-      alert(
-        `Successfully removed ${favoriteCountry} from favorite countries list`
-      );
     } else {
       dispatch(addFavorite(favoriteCountry));
-      alert(`Successfully added ${favoriteCountry} to favorite countries`);
     }
   };
 
   return (
     <MuiTableBody>
-      {countries
-        ? countries
+      {sortCountries
+        ? sortCountries()
             .filter((listCountries) => {
               if (inputText === "") {
                 return listCountries;
@@ -62,7 +98,11 @@ const TableBody = ({ countries, page, rowsPerPage, inputText }) => {
                     {country.languages &&
                     Object.keys(country.languages).length > 0
                       ? Object.values(country.languages).map((lang) => {
-                          return <li key={lang}>{lang}</li>;
+                          return (
+                            <li key={lang} style={{ listStyle: "none" }}>
+                              {lang}
+                            </li>
+                          );
                         })
                       : "N/A"}
                   </TableCell>

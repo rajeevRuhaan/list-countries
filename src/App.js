@@ -1,9 +1,8 @@
 import React, { useState, createContext, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
-
-// css
 import "./App.css";
+
 //mui them
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
@@ -23,12 +22,14 @@ function App() {
   const colorMode = () => {
     setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
   };
-  //
+
   const theme = createTheme({
     palette: {
       mode,
     },
   });
+
+  // make API call on page load
   useEffect(() => {
     dispatch(fetchCountries());
   }, [dispatch]);

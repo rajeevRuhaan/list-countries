@@ -21,8 +21,6 @@ const Index = ({ inputText }) => {
   const loading = useSelector((state) => state.countries.loading);
   const error = useSelector((state) => state.countries.err);
 
-  //
-
   //pagination
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);

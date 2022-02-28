@@ -2,11 +2,11 @@ import React from "react";
 
 import { Stack, Alert, AlertTitle } from "@mui/material";
 
-const Error = ({ error }) => {
+const Error = ({ err }) => {
   return (
     <Stack sx={{ width: "100%" }} spacing={2}>
       <Alert severity="error">
-        <AlertTitle>{error}</AlertTitle>
+        <AlertTitle>{err}</AlertTitle>
       </Alert>
     </Stack>
   );

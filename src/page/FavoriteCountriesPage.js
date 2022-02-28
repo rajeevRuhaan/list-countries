@@ -3,13 +3,14 @@ import React from "react";
 import { Paper } from "@mui/material";
 // components
 import Header from "../components/Header";
-import FavoriteCountries from "../components/favoriteCountriesList/FavoriteCountries";
+// import FavoriteCountries from "../components/favoriteCountriesList/FavoriteCountries";
+import Favorite from "../components/favoriteCountriesList/Favorite";
 
 const FavoriteCountriesPage = () => {
   return (
     <Paper sx={{ height: "100vh" }}>
       <Header />
-      <FavoriteCountries />
+      <Favorite />
     </Paper>
   );
 };

@@ -12,3 +12,10 @@ export const ADD_FAVORITE = "ADD_FAVORITE";
 export const REMOVE_FAVORITE = "REMOVE_FAVORITE";
 
 //
+export const NO_SORT = "NO_SORT";
+export const SORT_NAME_ASC = "SORT_NAME_ASC";
+export const SORT_NAME_DES = "SORT_NAME_DES";
+export const SORT_POPULATION_ASC = "SORT_POPULATION_ASC";
+export const SORT_POPULATION_DES = "SORT_POPULATION_DES";
+export const SORT_REGION_ASC = "SORT_REGION_ASC";
+export const SORT_REGION_DES = "SORT_REGION_DES";
