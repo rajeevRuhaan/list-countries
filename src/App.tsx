@@ -13,7 +13,10 @@ import FavoriteCountriesPage from "./page/FavoriteCountriesPage";
 import { fetchCountries } from "./redux/countries/action";
 
 //
-export const ColorModeContext = createContext();
+interface AppContextInterface {
+ [ palette : string]: {mode: string}
+}
+export const ColorModeContext = createContext({} as AppContextInterface);
 
 function App() {
   const [mode, setMode] = useState("light");
@@ -25,7 +28,7 @@ function App() {
 
   const theme = createTheme({
     palette: {
-      mode,
+      mode, 
     },
   });
 

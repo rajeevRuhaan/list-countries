@@ -5,7 +5,7 @@ import {
   FETCH_COUNTRY_ERROR,
 } from "../../constant";
 
-export const fetchCountry = (country) => {
+export const fetchCountry = (country: string) => {
   return async (dispatch) => {
     try {
       dispatch({

@@ -24,7 +24,7 @@ const Country = () => {
     dispatch(fetchCountry(name));
   }, [dispatch, name]);
 
-  const handleFavorite = (favoriteCountry) => {
+  const handleFavorite = (favoriteCountry: string) => {
     if (favorite.includes(favoriteCountry)) {
       dispatch(removeFavorite(favoriteCountry));
     } else {
