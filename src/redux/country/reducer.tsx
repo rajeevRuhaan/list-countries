@@ -4,7 +4,15 @@ import {
   FETCH_COUNTRY_ERROR,
 } from "../../constant";
 
-const initialState = {
+import {Country} from '../../types'
+
+type InitialState = {
+  country: Country[],
+  loading: boolean,
+  error: string,
+}
+
+const initialState: InitialState = {
   country: [],
   loading: false,
   error: "",

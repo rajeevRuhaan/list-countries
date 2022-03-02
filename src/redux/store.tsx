@@ -1,10 +1,16 @@
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
-
+import {Countries, Country} from '../types'
 import rootReducer from "./combineReducers";
 
-const initialState = {
+export type InitialState = {
+  sort: {sortBy: string},
+  favorite:{ favorite: string[]},
+  countries: {countries: Countries[], loading: boolean, err: string|null},
+  country: {country: Country[], loading: boolean, error: string|null}
+}
+const initialState : InitialState = {
   sort: { sortBy: "" },
   favorite: { favorite: [] },
   countries: { countries: [], loading: false, err: null },

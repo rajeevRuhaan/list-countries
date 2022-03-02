@@ -1,4 +1,4 @@
-import React, { useState, createContext, useEffect } from "react";
+import React, { useState, createContext, useEffect, useMemo } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import "./App.css";
@@ -11,20 +11,30 @@ import CountryPage from "./page/CountryPage";
 import CountriesPage from "./page/CountriesPage";
 import FavoriteCountriesPage from "./page/FavoriteCountriesPage";
 import { fetchCountries } from "./redux/countries/action";
+import { PaletteMode } from "@mui/material";
 
 //
-interface AppContextInterface {
- [ palette : string]: {mode: string}
-}
-export const ColorModeContext = createContext({} as AppContextInterface);
+
+
+
+
+export const ColorModeContext = createContext({ toggleColorMode: () => {} });
 
 function App() {
-  const [mode, setMode] = useState("light");
+  const [mode, setMode] = useState<PaletteMode>("light");
   const dispatch = useDispatch();
 
-  const colorMode = () => {
-    setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
-  };
+  // const colorMode = () => {
+  //   setMode((prevMode: PaletteMode) => (prevMode === "light" ? "dark" : "light"));
+  // };
+  const colorMode = useMemo(
+    () => ({
+      toggleColorMode: () => {
+        setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+      },
+    }),
+    [],
+  );
 
   const theme = createTheme({
     palette: {

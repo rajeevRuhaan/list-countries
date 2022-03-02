@@ -7,8 +7,9 @@ import {
   SORT_REGION_DES,
   NO_SORT,
 } from "../../constant";
+type InitialState = {sortBy: string}
 
-const initialState = {
+const initialState: InitialState = {
   sortBy: "",
 };
 

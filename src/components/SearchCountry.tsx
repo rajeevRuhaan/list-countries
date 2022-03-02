@@ -3,8 +3,9 @@ import React from "react";
 import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
 
-const SearchCountry = ({ setInputValue }) => {
-  const handleInput = (userInput) => {
+const SearchCountry = ({ setInputValue }: {setInputValue: string}) => {
+  
+  const handleInput = (userInput: string ) => {
     setInputValue(userInput);
   };
   return (

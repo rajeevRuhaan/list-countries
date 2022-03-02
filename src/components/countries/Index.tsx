@@ -15,11 +15,12 @@ import TableHead from "./TableHead";
 import TableBody from "./TableBody";
 import Error from "../Error";
 import Loading from "../Loading";
+import { InitialState } from "../../redux/store";
 
 const Index = ({ inputText }) => {
-  const countries = useSelector((state) => state.countries.countries);
-  const loading = useSelector((state) => state.countries.loading);
-  const error = useSelector((state) => state.countries.err);
+  const countries = useSelector((state: InitialState) => state.countries.countries);
+  const loading = useSelector((state: InitialState) => state.countries.loading);
+  const error = useSelector((state: InitialState) => state.countries.err);
 
   //pagination
   const [page, setPage] = React.useState(0);

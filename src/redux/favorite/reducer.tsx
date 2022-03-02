@@ -1,10 +1,13 @@
 import { ADD_FAVORITE, REMOVE_FAVORITE } from "../../constant";
+import {Actions} from './action'
+type InitialState = { favorite: string[]}
 
-const initialState = {
+
+const initialState: InitialState = {
   favorite: [],
 };
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action: Actions) => {
   const { type, payload } = action;
 
   switch (type) {

@@ -7,7 +7,7 @@ import Sort from "../components/Sort";
 import { Paper } from "@mui/material";
 
 const CountriesPage = () => {
-  const [inputText, setInputText] = useState("");
+  const [inputText, setInputText] = useState <string>("");
   return (
     <Paper sx={{ height: "100vh" }}>
       <Header />

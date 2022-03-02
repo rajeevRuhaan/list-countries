@@ -4,14 +4,21 @@ import {
   FETCH_COUNTRIES_ERROR,
 } from "../../constant";
 
+import {Countries} from '../../types'
+
+type InitialState = {
+  countries:Countries[],
+  loading: boolean,
+  err: string
+}
 // initial state for countries
-const initialState = {
+const initialState: InitialState = {
   countries: [],
   loading: false,
   err: "",
 };
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action): InitialState => {
   const { type, payload } = action;
 
   switch (type) {
