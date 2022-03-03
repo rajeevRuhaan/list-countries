@@ -7,14 +7,14 @@ import rootReducer from "./combineReducers";
 export type InitialState = {
   sort: {sortBy: string},
   favorite:{ favorite: string[]},
-  countries: {countries: Countries[], loading: boolean, err: string|null},
-  country: {country: Country[], loading: boolean, error: string|null}
+  countries: {countries: Countries[], loading: boolean, error: string},
+  country: {country: Country[], loading: boolean, error: string}
 }
 const initialState : InitialState = {
   sort: { sortBy: "" },
   favorite: { favorite: [] },
-  countries: { countries: [], loading: false, err: null },
-  country: { country: [], loading: false, error: null },
+  countries: { countries: [], loading: false, error: "" },
+  country: { country: [], loading: false, error: "" },
 };
 const storeFactory = () => {
   const favoriteLists = localStorage.getItem("favoriteCountries");

@@ -50,3 +50,13 @@ export const sortRegionDes = () => {
     payload: "regionDes",
   };
 };
+
+type NoSortAction = {type: typeof NO_SORT, payload: string}
+type SortNameAscAction = {type: typeof SORT_NAME_ASC, payload: string}
+type SortNameDesAction = {type: typeof SORT_NAME_DES, payload: string}
+type SortPopulationAscAction = {type: typeof SORT_POPULATION_ASC, payload: string}
+type SortPopulationDesAction = {type: typeof SORT_POPULATION_DES, payload: string}
+type SortRegionAscAction ={type: typeof SORT_REGION_ASC, payload: string}
+type SortRegionDesAction = {type: typeof SORT_REGION_DES, payload: string}
+
+export type Actions = NoSortAction | SortNameAscAction | SortNameDesAction | SortPopulationAscAction | SortPopulationDesAction | SortRegionAscAction | SortRegionDesAction

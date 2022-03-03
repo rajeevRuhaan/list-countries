@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { useSelector } from "react-redux";
 //material ui components
 import {
@@ -17,20 +17,24 @@ import Error from "../Error";
 import Loading from "../Loading";
 import { InitialState } from "../../redux/store";
 
-const Index = ({ inputText }) => {
+type InputTextProps = {
+  inputText: string
+}
+
+const Index = ({ inputText }: InputTextProps) => {
   const countries = useSelector((state: InitialState) => state.countries.countries);
   const loading = useSelector((state: InitialState) => state.countries.loading);
-  const error = useSelector((state: InitialState) => state.countries.err);
+  const error = useSelector((state: InitialState) => state.countries.error);
 
   //pagination
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
 
-  const handleChangePage = (event, newPage) => {
+  const handleChangePage = (event: React.ChangeEvent<HTMLInputElement>, newPage: number ) => {
     setPage(newPage);
   };
 
-  const handleChangeRowsPerPage = (event) => {
+  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };

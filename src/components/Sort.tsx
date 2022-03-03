@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import {InitialState} from './../redux/store'
 import {
   noSort,
   sortNameAsc,
@@ -16,9 +17,9 @@ import FormControl from "@mui/material/FormControl";
 
 const Sort = () => {
   const dispatch = useDispatch();
-  const sort = useSelector((state) => state.sort.sort);
+  const sort = useSelector((state: InitialState) => state.sort.sortBy);
 
-  const handleSort = (sortAction) => {
+  const handleSort = (sortAction: string) => {
     if (sortAction === "") {
       return dispatch(noSort());
     } else if (sortAction === "populationAsc") {

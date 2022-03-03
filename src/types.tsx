@@ -13,9 +13,11 @@ export type Countries = {
     capital: string[]
 }
 
+
 export type Country = {
     name: {
-        common: string
+        common: string,
+        nativeName: {[ key :string]:{common: string}}
     }
     languages: {
        [ key :string] : string
@@ -26,4 +28,12 @@ export type Country = {
     region: string
     population: number
     capital: string[]
+    borders: string[]
+    timezones:string[]
+    currencies:{[ key :string]: {name: string}}
+}
+
+export type Error = {
+   error: boolean | string
+    
 }

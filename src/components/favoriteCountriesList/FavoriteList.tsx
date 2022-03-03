@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFavorite } from "../../redux/favorite/action";
+import { InitialState } from "../../redux/store";
 //mui components
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
@@ -10,7 +11,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 
 const FavoriteList = () => {
   const dispatch = useDispatch();
-  const favoriteList = useSelector((state) => state.favorite.favorite);
+  const favoriteList = useSelector((state: InitialState) => state.favorite.favorite);
 
   console.log(favoriteList);
   if (favoriteList.length === 0) {

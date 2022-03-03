@@ -7,13 +7,15 @@ import {
   SORT_REGION_DES,
   NO_SORT,
 } from "../../constant";
+import {Actions} from './action'
+
 type InitialState = {sortBy: string}
 
 const initialState: InitialState = {
   sortBy: "",
 };
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action: Actions): InitialState => {
   const { type, payload } = action;
 
   switch (type) {

@@ -7,7 +7,7 @@ const initialState: InitialState = {
   favorite: [],
 };
 
-const reducer = (state = initialState, action: Actions) => {
+const reducer = (state = initialState, action: Actions): InitialState => {
   const { type, payload } = action;
 
   switch (type) {

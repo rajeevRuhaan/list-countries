@@ -5,6 +5,7 @@ import {
 } from "../../constant";
 
 import {Country} from '../../types'
+import {Actions} from './action'
 
 type InitialState = {
   country: Country[],
@@ -17,7 +18,7 @@ const initialState: InitialState = {
   loading: false,
   error: "",
 };
-const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action: Actions): InitialState => {
   const { type, payload } = action;
 
   switch (type) {

@@ -2,26 +2,24 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchCountry } from "../../redux/country/action";
-import "./Country.css";
-
-// @mui component and icons
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import { IconButton } from "@material-ui/core";
-
-//import components
 import Loading from "../Loading";
 import Error from "../Error";
 import { addFavorite, removeFavorite } from "../../redux/favorite/action";
+import { InitialState } from "../../redux/store";
+
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import { IconButton } from "@material-ui/core";
+import "./Country.css";
 
 const Country = () => {
   const name = useParams().country;
   const dispatch = useDispatch();
-  const { country, loading, error } = useSelector((state) => state.country);
-  const favorite = useSelector((state) => state.favorite.favorite);
+  const { country, loading, error } = useSelector((state: InitialState) => state.country);
+  const favorite = useSelector((state: InitialState) => state.favorite.favorite);
   console.log(favorite);
 
   useEffect(() => {
-    dispatch(fetchCountry(name));
+    dispatch(fetchCountry(name as string));
   }, [dispatch, name]);
 
   const handleFavorite = (favoriteCountry: string) => {

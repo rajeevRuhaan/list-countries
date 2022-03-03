@@ -2,11 +2,7 @@ import axios from "axios";
 
 const baseUrl = "https://restcountries.com/v3.1";
 
-type valueType={
-  value:string
-}
-
-export const getCountriesList = async (value : valueType) => {
+export const getCountriesList = async (value : string) => {
   let response = await axios.get(`${baseUrl}/${value}`);
 
   return response.data;

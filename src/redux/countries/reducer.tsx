@@ -5,20 +5,21 @@ import {
 } from "../../constant";
 
 import {Countries} from '../../types'
+import {Actions} from './action'
 
 type InitialState = {
   countries:Countries[],
   loading: boolean,
-  err: string
+  error: string
 }
 // initial state for countries
 const initialState: InitialState = {
   countries: [],
   loading: false,
-  err: "",
+  error: "",
 };
 
-const reducer = (state = initialState, action): InitialState => {
+const reducer = (state = initialState, action: Actions): InitialState => {
   const { type, payload } = action;
 
   switch (type) {
@@ -36,7 +37,7 @@ const reducer = (state = initialState, action): InitialState => {
     case FETCH_COUNTRIES_ERROR:
       return {
         ...state,
-        err: payload.message,
+        error: payload.message,
         loading: false,
       };
     default:

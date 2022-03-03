@@ -1,22 +1,29 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { addFavorite, removeFavorite } from "../../redux/favorite/action";
+import {InitialState} from '../../redux/store'
+import { Countries } from "../../types";
 
 // import mui components
 import MuiTableBody from "@mui/material/TableBody";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
-
 // material ui icon
 import FavoriteIcon from "@mui/icons-material/Favorite";
-// import components
-import { addFavorite, removeFavorite } from "../../redux/favorite/action";
 
-const TableBody = ({ countries, page, rowsPerPage, inputText }) => {
+type TableBodyProps = {
+  countries: Countries[],
+  page: number,
+  rowsPerPage: number,
+  inputText: string
+}
+
+const TableBody = ({ countries, page, rowsPerPage, inputText }: TableBodyProps) => {
   const dispatch = useDispatch();
-  const favorite = useSelector((state) => state.favorite.favorite);
+  const favorite = useSelector((state: InitialState) => state.favorite.favorite);
   //sorting action
-  const sortBy = useSelector((state) => state.sort.sortBy);
+  const sortBy = useSelector((state: InitialState) => state.sort.sortBy);
 
   const sortCountries = () => {
     if (sortBy === "") {
@@ -56,7 +63,7 @@ const TableBody = ({ countries, page, rowsPerPage, inputText }) => {
     }
   };
 
-  const handleFavoriteCountry = (favoriteCountry) => {
+  const handleFavoriteCountry = (favoriteCountry: string) => {
     if (favorite.includes(favoriteCountry)) {
       dispatch(removeFavorite(favoriteCountry));
     } else {

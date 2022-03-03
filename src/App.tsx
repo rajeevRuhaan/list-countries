@@ -13,20 +13,12 @@ import FavoriteCountriesPage from "./page/FavoriteCountriesPage";
 import { fetchCountries } from "./redux/countries/action";
 import { PaletteMode } from "@mui/material";
 
-//
-
-
-
-
 export const ColorModeContext = createContext({ toggleColorMode: () => {} });
 
 function App() {
   const [mode, setMode] = useState<PaletteMode>("light");
   const dispatch = useDispatch();
 
-  // const colorMode = () => {
-  //   setMode((prevMode: PaletteMode) => (prevMode === "light" ? "dark" : "light"));
-  // };
   const colorMode = useMemo(
     () => ({
       toggleColorMode: () => {
