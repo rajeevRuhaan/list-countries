@@ -3,7 +3,7 @@ import { Box, CircularProgress, Alert, AlertTitle } from "@mui/material";
 
 const Loading = () => {
   return (
-    <Box sx={{ width: "100%" }} spacing={2}>
+    <Box sx={{ width: "100%" }} >
       <Alert severity="info">
         <AlertTitle>Loading...</AlertTitle>
         <CircularProgress />

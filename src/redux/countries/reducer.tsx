@@ -20,9 +20,9 @@ const initialState: InitialState = {
 };
 
 const reducer = (state = initialState, action: Actions): InitialState => {
-  const { type, payload } = action;
+  // const { type, payload } = action;
 
-  switch (type) {
+  switch (action.type) {
     case FETCHING_COUNTRIES:
       return {
         ...state,
@@ -31,13 +31,13 @@ const reducer = (state = initialState, action: Actions): InitialState => {
     case FETCH_COUNTRIES_SUCCESS:
       return {
         ...state,
-        countries: payload,
+        countries: action.payload,
         loading: false,
       };
     case FETCH_COUNTRIES_ERROR:
       return {
         ...state,
-        error: payload.message,
+        error: action.payload,
         loading: false,
       };
     default:

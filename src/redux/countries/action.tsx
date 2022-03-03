@@ -14,6 +14,7 @@ export const fetchCountries = () => {
         type: FETCHING_COUNTRIES,
       });
       const data = await getCountriesList("/all");
+      console.log("data API:", data)
       dispatch(fetchCountriesSuccess(data));
     } catch (error: any) {
       dispatch(fetchCountriesError(error));
@@ -25,7 +26,6 @@ export const fetchCountriesSuccess = (data: Countries[]) => {
   return {
     type: FETCH_COUNTRIES_SUCCESS,
     payload: data,
-    loading: false,
   };
 };
 
@@ -33,7 +33,7 @@ export const fetchCountriesError = (error: Error) => {
   return {
     type: FETCH_COUNTRIES_ERROR,
     payload: error,
-    loading: false,
+    
   };
 };
 
@@ -42,11 +42,11 @@ type FetchCountriesAction = {
 }
 type FetchCountriesSuccessAction = {
   type: typeof FETCH_COUNTRIES_SUCCESS,
-  loading: boolean,
+  payload: Countries[]
 }
 type FetchCountriesErrorAction = {
   type: typeof FETCH_COUNTRIES_ERROR,
-  loading: boolean,
+  payload: string
 }
 
 export type Actions = FetchCountriesAction | FetchCountriesSuccessAction |FetchCountriesErrorAction

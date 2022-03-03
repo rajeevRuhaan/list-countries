@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addFavorite, removeFavorite } from "../../redux/favorite/action";
@@ -25,10 +25,8 @@ const TableBody = ({ countries, page, rowsPerPage, inputText }: TableBodyProps) 
   //sorting action
   const sortBy = useSelector((state: InitialState) => state.sort.sortBy);
 
-  const sortCountries = () => {
-    if (sortBy === "") {
-      return [...countries];
-    } else if (sortBy === "populationDes") {
+  const sortCountries = useCallback(() => {
+    if (sortBy === "populationDes") {
       return [...countries].sort((a, b) =>
         b.population < a.population ? -1 : b.population > a.population ? 1 : 0
       );
@@ -60,8 +58,9 @@ const TableBody = ({ countries, page, rowsPerPage, inputText }: TableBodyProps) 
       return [...countries].sort((a, b) =>
         b.region < a.region ? 1 : b.region > a.region ? -1 : 0
       );
-    }
-  };
+    } else 
+      return [...countries];
+  }, [countries, sortBy]);
 
   const handleFavoriteCountry = (favoriteCountry: string) => {
     if (favorite.includes(favoriteCountry)) {

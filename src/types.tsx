@@ -34,6 +34,6 @@ export type Country = {
 }
 
 export type Error = {
-   error: boolean | string
+   error: string
     
 }

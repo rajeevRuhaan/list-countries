@@ -4,7 +4,6 @@ const baseUrl = "https://restcountries.com/v3.1";
 
 export const getCountriesList = async (value : string) => {
   let response = await axios.get(`${baseUrl}/${value}`);
-
   return response.data;
 };
 

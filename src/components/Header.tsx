@@ -10,7 +10,8 @@ import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import IconButton from "@mui/material/IconButton";
 import { Box, Typography } from "@mui/material";
-import { Favorite, Home } from "@material-ui/icons";
+import { Favorite } from "@material-ui/icons";
+import HomeIcon from "@mui/icons-material/Home";
 import { Badge } from "@material-ui/core";
 
 const Header = () => {
@@ -51,7 +52,7 @@ const Header = () => {
         >
           <div>
             <Link to="/">
-              <Home className="icon" sx={{ fontSize: "40px" }} />
+              <HomeIcon  />
             </Link>
           </div>
           <Badge badgeContent={favLength} color="secondary">
@@ -60,7 +61,7 @@ const Header = () => {
             </Link>
           </Badge>
 
-          <IconButton sx={{ width: 40, height: 40 }} onClick={colorMode}>
+          <IconButton sx={{ width: 40, height: 40 }} onClick={colorMode.toggleColorMode}>
             {theme.palette.mode === "dark" ? (
               <Brightness7Icon />
             ) : (

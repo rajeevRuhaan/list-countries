@@ -30,9 +30,10 @@ const Index = ({ inputText }: InputTextProps) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
-  const handleChangePage = (event: React.ChangeEvent<HTMLInputElement>, newPage: number ) => {
+  const handleChangePage = (event: unknown, newPage: number ) => {
     setPage(newPage);
   };
+
 
   const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
     setRowsPerPage(parseInt(event.target.value, 10));

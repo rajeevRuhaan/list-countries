@@ -19,9 +19,9 @@ const initialState: InitialState = {
   error: "",
 };
 const reducer = (state = initialState, action: Actions): InitialState => {
-  const { type, payload } = action;
+  // const { type, payload } = action;
 
-  switch (type) {
+  switch (action.type) {
     case FETCHING_COUNTRY:
       return {
         ...state,
@@ -30,13 +30,13 @@ const reducer = (state = initialState, action: Actions): InitialState => {
     case FETCH_COUNTRY_SUCCESS:
       return {
         ...state,
-        country: payload,
+        country: action.payload,
         loading: false,
       };
     case FETCH_COUNTRY_ERROR:
       return {
         ...state,
-        error: payload,
+        error: action.payload,
         loading: false,
       };
 

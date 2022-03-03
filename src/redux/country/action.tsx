@@ -26,7 +26,7 @@ export const fetchCountrySuccess = (data: Country[]) => {
   return {
     type: FETCH_COUNTRY_SUCCESS,
     payload: data,
-    loading: false,
+   
   };
 };
 
@@ -42,11 +42,11 @@ type FetchCountryAction = {
 }
 type FetchCountrySuccessAction = {
   type: typeof FETCH_COUNTRY_SUCCESS,
-  loading: boolean,
+  payload: Country[]
 }
 type FetchCountryErrorAction = {
   type: typeof FETCH_COUNTRY_ERROR,
-  loading: boolean,
+  payload: string
 }
 
 export type Actions = FetchCountryAction | FetchCountrySuccessAction |FetchCountryErrorAction
