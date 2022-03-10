@@ -13,6 +13,7 @@ import FavoriteCountriesPage from "./page/FavoriteCountriesPage";
 import { fetchCountries } from "./redux/countries/action";
 import { PaletteMode } from "@mui/material";
 
+
 export const ColorModeContext = createContext({ toggleColorMode: () => {} });
 
 function App() {
@@ -40,7 +41,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <ColorModeContext.Provider value={colorMode}>
+        <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <Routes>
           <Route path="/" element={<CountriesPage />} />

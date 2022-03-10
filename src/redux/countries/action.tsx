@@ -14,7 +14,6 @@ export const fetchCountries = () => {
         type: FETCHING_COUNTRIES,
       });
       const data = await getCountriesList("/all");
-      console.log("data API:", data)
       dispatch(fetchCountriesSuccess(data));
     } catch (error: any) {
       dispatch(fetchCountriesError(error));
