@@ -74,10 +74,10 @@ Take your time to implement the following features:
 
 ## References
 
-[Demo](https://flagify.netlify.app/)
+[Demo](https://countrieslists.netlify.app/)
 
 Homepage:
-![homepage](media/home.png)
+![homepage](media/homepage.png)
 
 Country page:
 ![country page](media/country.png)
