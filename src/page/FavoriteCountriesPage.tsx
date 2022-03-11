@@ -1,9 +1,6 @@
-import React from "react";
-// mui component
-import { Paper } from "@mui/material";
+import Paper  from "@mui/material/Paper";
 // components
 import Header from "../components/Header";
-// import FavoriteCountries from "../components/favoriteCountriesList/FavoriteCountries";
 import Favorite from "../components/favoriteCountriesList/Favorite";
 
 const FavoriteCountriesPage = () => {

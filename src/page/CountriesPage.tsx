@@ -4,7 +4,7 @@ import Header from "../components/Header";
 import SearchCountry from "../components/SearchCountry";
 import Index from ".././components/countries/Index";
 import Sort from "../components/Sort";
-import { Paper } from "@mui/material";
+import Paper from "@mui/material/Paper";
 
 const CountriesPage = () => {
   const [inputText, setInputText] = useState <string>("");
